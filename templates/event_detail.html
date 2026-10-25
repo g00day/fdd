@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ event.title }} | Детали{% endblock %}
+
+{% block content %}
+<div class="card shadow-sm p-4 bg-white rounded border mb-4">
+    <nav class="breadcrumb small">
+        <a class="breadcrumb-item" href="{% url 'events_list' %}">Мероприятия</a>
+        <span class="breadcrumb-item active">{{ event.title }}</span>
+    </nav>
+    <hr class="mt-1">
+    <h2 class="fw-bold text-dark mb-2">{{ event.title }}</h2>
+    <div class="mb-3 text-muted">
+        <span class="me-3">📅 <strong>Дата:</strong> {{ event.date|date:"Y-m-d" }}</span>
+        <span>📍 <strong>Место проведения:</strong> {{ event.location }}</span>
+    </div>
+    <p class="fs-5 text-secondary border-start border-primary border-4 ps-3 my-3">{{ event.description }}</p>
+    
+    <h4 class="mt-4 fw-bold text-dark border-bottom pb-2">Связанные фотоальбомы ({{ albums|length }}):</h4>
+    <ul class="list-group list-group-flush mt-2">
+        {% for al in albums %}
+            <li class="list-group-item d-flex align-items-center px-0 py-3">
+                <span class="fs-4 me-2">📁</span>
+                <div>
+                    <span class="fw-semibold text-dark">{{ al.title }}</span>
+                    <br><small class="text-muted">Системный ID: <code>{{ al.id }}</code></small>
+                </div>
+            </li>
+        {% empty %}
+            <li class="list-group-item text-muted px-0 py-3">Для данного мероприятия еще не сформированы тематические фотоальбомы.</li>
+        {% endfor %}
+    </ul>
+    <div class="mt-4 pt-2">
+        <a href="{% url 'events_list' %}" class="btn btn-outline-secondary">&larr; Назад к списку</a>
+    </div>
+</div>
+{% endblock %}

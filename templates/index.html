@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Главная | МедиаАрхив{% endblock %}
+
+{% block content %}
+<div class="p-5 mb-4 bg-white rounded-3 shadow-sm border">
+    <h1 class="display-4 fw-bold text-dark">Система учета медиафайлов</h1>
+    <p class="lead text-muted">Полнофункциональное веб-приложение на фреймворке Django для каталогизации событий, распределения фотоматериалов по альбомам и разметки присутствующих гостей.</p>
+    <hr class="my-4">
+    <div class="d-flex gap-2">
+        <a href="{% url 'events_list' %}" class="btn btn-primary btn-lg shadow-sm">Открыть мероприятия</a>
+        <a href="{% url 'participants_list' %}" class="btn btn-outline-secondary btn-lg">Посмотреть участников</a>
+    </div>
+</div>
+{% endblock %}
