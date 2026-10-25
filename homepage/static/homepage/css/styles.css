@@ -1,0 +1,12 @@
+.archive-card {
+    border-left: 4px solid #0d6efd !important; /* Выделение карточек синим цветом */
+    transition: transform 0.2s;
+}
+.archive-card:hover {
+    transform: translateY(-3px); /* Эффект приподнимания карточки при наведении */
+}
+.logo-img {
+    width: 40px;
+    height: auto;
+    margin-right: 10px;
+}
